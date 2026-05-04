@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'pages/beranda_page.dart';
+import 'pages/home_page.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         foregroundColor: Colors.white,
       ),
     ),
-    home: const BerandaPage(),
+    home: const HomePage(),
   );
 }
 }

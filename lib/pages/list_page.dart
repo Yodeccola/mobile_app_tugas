@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dialog_page.dart';
 import 'checkbox_page.dart';
-import 'profile_page.dart';
 import 'radio_page.dart';
+import 'p1_page.dart';
+import 'p2_page.dart';
+import 'p3_page.dart';
 
 class ListPage extends StatelessWidget {
   const ListPage({super.key});
@@ -30,10 +32,13 @@ class ListPage extends StatelessWidget {
       appBar: AppBar(title: const Text("List Menu")),
       body: ListView(
         children: [
+          menuItem(context, "Pertemuan 1", Icons.looks_one, const P1Page()),
+          menuItem(context, "Pertemuan 2", Icons.looks_two, const P2Page()),
+          menuItem(context, "Pertemuan 3", Icons.looks_3, const P3Page()),
           menuItem(context, "Pertemuan 4", Icons.notifications, const DialogPage()),
+          menuItem(context, "Pertemuan 5", Icons.list, const ListPage()),
           menuItem(context, "Pertemuan 6", Icons.check_box, const CheckboxPage()),
           menuItem(context, "Pertemuan 7", Icons.radio_button_checked, const RadioPage()),
-          menuItem(context, "Profile", Icons.person, const ProfilePage()),
         ],
       ),
     );
