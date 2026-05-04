@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dialog_page.dart';
 import 'checkbox_page.dart';
 import 'profile_page.dart';
+import 'radio_page.dart';
 
 class ListPage extends StatelessWidget {
   const ListPage({super.key});
@@ -31,6 +32,7 @@ class ListPage extends StatelessWidget {
         children: [
           menuItem(context, "Pertemuan 4", Icons.notifications, const DialogPage()),
           menuItem(context, "Pertemuan 6", Icons.check_box, const CheckboxPage()),
+          menuItem(context, "Pertemuan 7", Icons.radio_button_checked, const RadioPage()),
           menuItem(context, "Profile", Icons.person, const ProfilePage()),
         ],
       ),
