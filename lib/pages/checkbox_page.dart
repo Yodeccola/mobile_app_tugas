@@ -8,7 +8,6 @@ class CheckboxPage extends StatefulWidget {
 }
 
 class _CheckboxPageState extends State<CheckboxPage> {
-
   final TextEditingController nama = TextEditingController();
   final TextEditingController email = TextEditingController();
 
@@ -18,6 +17,76 @@ class _CheckboxPageState extends State<CheckboxPage> {
   bool game = false;
   bool setuju = false;
 
+  void submitForm() {
+    if (nama.text.isEmpty || email.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Nama & Email wajib diisi")),
+      );
+      return;
+    }
+
+    List<String> hobi = [];
+    if (membaca) hobi.add("Membaca");
+    if (olahraga) hobi.add("Olahraga");
+    if (musik) hobi.add("Musik");
+    if (game) hobi.add("Game");
+
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        title: const Text("Pendaftaran Berhasil"),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(title: Text("Nama: ${nama.text}")),
+            ListTile(title: Text("Email: ${email.text}")),
+            ListTile(
+              title: Text(
+                "Hobi: ${hobi.isEmpty ? '-' : hobi.join(", ")}",
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Data berhasil disimpan")),
+              );
+
+              // 🔄 Reset form
+              nama.clear();
+              email.clear();
+              setState(() {
+                membaca = false;
+                olahraga = false;
+                musik = false;
+                game = false;
+                setuju = false;
+              });
+            },
+            child: const Text("OK"),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget sectionTitle(String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Text(
+        text,
+        style: const TextStyle(fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,18 +95,29 @@ class _CheckboxPageState extends State<CheckboxPage> {
         padding: const EdgeInsets.all(16),
         child: ListView(
           children: [
+            sectionTitle("Data Diri"),
 
-            const Text("Nama"),
-            TextField(controller: nama),
+            TextField(
+              controller: nama,
+              decoration: const InputDecoration(
+                labelText: "Nama",
+                border: OutlineInputBorder(),
+              ),
+            ),
 
             const SizedBox(height: 10),
 
-            const Text("Email"),
-            TextField(controller: email),
+            TextField(
+              controller: email,
+              decoration: const InputDecoration(
+                labelText: "Email",
+                border: OutlineInputBorder(),
+              ),
+            ),
 
             const SizedBox(height: 20),
 
-            const Text("Hobi", style: TextStyle(fontWeight: FontWeight.bold)),
+            sectionTitle("Hobi"),
 
             CheckboxListTile(
               title: const Text("Membaca"),
@@ -73,8 +153,9 @@ class _CheckboxPageState extends State<CheckboxPage> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,
+                padding: const EdgeInsets.symmetric(vertical: 14),
               ),
-              onPressed: setuju ? () {} : null,
+              onPressed: setuju ? submitForm : null,
               child: const Text("DAFTAR"),
             ),
           ],
