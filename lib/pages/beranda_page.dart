@@ -18,23 +18,32 @@ class BerandaPage extends StatelessWidget {
   ) {
     return Card(
       elevation: 4,
+      clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(15),
-        splashColor: Colors.blue.withOpacity(0.2),
-        highlightColor: Colors.blue.withOpacity(0.1),
+
+        splashColor: Colors.blue.withOpacity(0.3),
+        highlightColor: Colors.blue.withOpacity(0.15),
+        hoverColor: Colors.blue.withOpacity(0.08),
+
         onTap: () {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (_) => page),
           );
         },
+
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 35, color: Colors.blue),
+            Icon(
+              icon,
+              size: 35,
+              color: Colors.blue,
+            ),
 
             const SizedBox(height: 8),
 
