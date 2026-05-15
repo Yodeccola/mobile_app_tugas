@@ -6,6 +6,7 @@ import 'radio_page.dart';
 import 'p1_page.dart';
 import 'p2_page.dart';
 import 'p3_page.dart';
+import 'p8_page.dart';
 
 class BerandaPage extends StatelessWidget {
   const BerandaPage({super.key});
@@ -97,6 +98,11 @@ class BerandaPage extends StatelessWidget {
         "icon": Icons.radio_button_checked,
         "page": const RadioPage()
       },
+      {
+        "title": "Pertemuan 8",
+        "icon": Icons.search,
+        "page": const P8Page()
+      }
     ];
 
     return Scaffold(
