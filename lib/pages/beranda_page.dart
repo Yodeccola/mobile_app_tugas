@@ -7,6 +7,7 @@ import 'p1_page.dart';
 import 'p2_page.dart';
 import 'p3_page.dart';
 import 'p8_page.dart';
+import 'p9_page.dart';
 
 class BerandaPage extends StatelessWidget {
   const BerandaPage({super.key});
@@ -102,7 +103,12 @@ class BerandaPage extends StatelessWidget {
         "title": "Pertemuan 8",
         "icon": Icons.search,
         "page": const P8Page()
-      }
+      },
+      {
+        "title": "Pertemuan 9",
+        "icon": Icons.calendar_month,
+        "page": const P9Page()
+      },
     ];
 
     return Scaffold(
