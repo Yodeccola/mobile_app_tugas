@@ -12,9 +12,11 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState
     extends State<RegisterPage> {
-  final nameController = TextEditingController();
+  final nameController =
+      TextEditingController();
 
-  final emailController = TextEditingController();
+  final emailController =
+      TextEditingController();
 
   final passwordController =
       TextEditingController();
@@ -70,12 +72,39 @@ class _RegisterPageState
 
       filled: true,
 
-      fillColor: const Color(0xffF3F6FF),
+      fillColor: Colors.white,
+
+      contentPadding:
+          const EdgeInsets.symmetric(
+        vertical: 18,
+      ),
 
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(14),
+        borderRadius:
+            BorderRadius.circular(12),
 
-        borderSide: BorderSide.none,
+        borderSide: BorderSide(
+          color: Colors.grey.shade300,
+        ),
+      ),
+
+      enabledBorder: OutlineInputBorder(
+        borderRadius:
+            BorderRadius.circular(12),
+
+        borderSide: BorderSide(
+          color: Colors.grey.shade300,
+        ),
+      ),
+
+      focusedBorder: OutlineInputBorder(
+        borderRadius:
+            BorderRadius.circular(12),
+
+        borderSide: const BorderSide(
+          color: Color(0xff3399FF),
+          width: 2,
+        ),
       ),
     );
   }
@@ -83,182 +112,257 @@ class _RegisterPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF5F7FF),
+      body: Container(
+        width: double.infinity,
 
-      body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xff4FACFE),
+              Color(0xffC850FF),
+            ],
+          ),
+        ),
 
-            child: Container(
-              padding: const EdgeInsets.all(24),
+        child: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              padding:
+                  const EdgeInsets.all(24),
 
-              decoration: BoxDecoration(
-                color: Colors.white,
+              child: Container(
+                padding:
+                    const EdgeInsets.all(24),
 
-                borderRadius: BorderRadius.circular(28),
+                decoration: BoxDecoration(
+                  color: Colors.white,
 
-                boxShadow: [
-                  BoxShadow(
-                    color:
-                        Colors.black.withOpacity(0.08),
-                    blurRadius: 18,
-                    offset: const Offset(0, 8),
+                  borderRadius:
+                      BorderRadius.circular(
+                    28,
                   ),
-                ],
-              ),
 
-              child: Column(
-                children: [
-                  const Icon(
-                    Icons.person_add_alt_1,
-                    size: 70,
-                    color: Color(0xff3399FF),
-                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black
+                          .withOpacity(0.12),
 
-                  const SizedBox(height: 20),
+                      blurRadius: 18,
 
-                  const Text(
-                    "Create Account",
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
+                      offset:
+                          const Offset(0, 8),
                     ),
-                  ),
+                  ],
+                ),
 
-                  const SizedBox(height: 30),
-
-                  TextField(
-                    controller: nameController,
-                    decoration: inputStyle(
-                      "Full Name",
-                      Icons.person,
+                child: Column(
+                  children: [
+                    const Icon(
+                      Icons.person_add_alt_1,
+                      size: 80,
+                      color: Color(
+                        0xff3399FF,
+                      ),
                     ),
-                  ),
 
-                  const SizedBox(height: 16),
-
-                  TextField(
-                    controller: emailController,
-                    decoration: inputStyle(
-                      "Email",
-                      Icons.email,
+                    const SizedBox(
+                      height: 20,
                     ),
-                  ),
 
-                  const SizedBox(height: 16),
+                    const Text(
+                      "Create Account",
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight:
+                            FontWeight.bold,
+                      ),
+                    ),
 
-                  TextField(
-                    controller: passwordController,
-                    obscureText: obscure1,
+                    const SizedBox(
+                      height: 30,
+                    ),
 
-                    decoration:
-                        inputStyle(
-                          "Password",
-                          Icons.lock,
-                        ).copyWith(
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              obscure1
-                                  ? Icons.visibility
-                                  : Icons
-                                      .visibility_off,
+                    TextField(
+                      controller:
+                          nameController,
+
+                      decoration:
+                          inputStyle(
+                        "Full Name",
+                        Icons.person,
+                      ),
+                    ),
+
+                    const SizedBox(
+                      height: 18,
+                    ),
+
+                    TextField(
+                      controller:
+                          emailController,
+
+                      decoration:
+                          inputStyle(
+                        "Email",
+                        Icons.email,
+                      ),
+                    ),
+
+                    const SizedBox(
+                      height: 18,
+                    ),
+
+                    TextField(
+                      controller:
+                          passwordController,
+
+                      obscureText:
+                          obscure1,
+
+                      decoration:
+                          inputStyle(
+                        "Password",
+                        Icons.lock,
+                      ).copyWith(
+                        suffixIcon:
+                            IconButton(
+                          icon: Icon(
+                            obscure1
+                                ? Icons
+                                    .visibility
+                                : Icons
+                                    .visibility_off,
+                          ),
+
+                          onPressed: () {
+                            setState(() {
+                              obscure1 =
+                                  !obscure1;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+
+                    const SizedBox(
+                      height: 18,
+                    ),
+
+                    TextField(
+                      controller:
+                          confirmController,
+
+                      obscureText:
+                          obscure2,
+
+                      decoration:
+                          inputStyle(
+                        "Confirm Password",
+                        Icons
+                            .lock_outline,
+                      ).copyWith(
+                        suffixIcon:
+                            IconButton(
+                          icon: Icon(
+                            obscure2
+                                ? Icons
+                                    .visibility
+                                : Icons
+                                    .visibility_off,
+                          ),
+
+                          onPressed: () {
+                            setState(() {
+                              obscure2 =
+                                  !obscure2;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+
+                    const SizedBox(
+                      height: 26,
+                    ),
+
+                    SizedBox(
+                      width: double.infinity,
+                      height: 55,
+
+                      child: ElevatedButton(
+                        style:
+                            ElevatedButton
+                                .styleFrom(
+                          backgroundColor:
+                              const Color(
+                            0xff3399FF,
+                          ),
+
+                          shape:
+                              RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius
+                                    .circular(
+                              12,
                             ),
-
-                            onPressed: () {
-                              setState(() {
-                                obscure1 = !obscure1;
-                              });
-                            },
                           ),
                         ),
-                  ),
 
-                  const SizedBox(height: 16),
-
-                  TextField(
-                    controller: confirmController,
-                    obscureText: obscure2,
-
-                    decoration:
-                        inputStyle(
-                          "Confirm Password",
-                          Icons.lock_outline,
-                        ).copyWith(
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              obscure2
-                                  ? Icons.visibility
-                                  : Icons
-                                      .visibility_off,
-                            ),
-
-                            onPressed: () {
-                              setState(() {
-                                obscure2 = !obscure2;
-                              });
-                            },
-                          ),
-                        ),
-                  ),
-
-                  const SizedBox(height: 24),
-
-                  SizedBox(
-                    width: double.infinity,
-                    height: 52,
-
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color(0xff3399FF),
-
-                        shape:
-                            RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(14),
-                        ),
-                      ),
-
-                      onPressed: register,
-
-                      child: const Text(
-                        "Register",
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 20),
-
-                  Row(
-                    mainAxisAlignment:
-                        MainAxisAlignment.center,
-
-                    children: [
-                      const Text(
-                        "Already have an account? ",
-                      ),
-
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
+                        onPressed: register,
 
                         child: const Text(
-                          "Login",
+                          "Register",
                           style: TextStyle(
-                            color: Colors.blue,
+                            color:
+                                Colors.white,
+                            fontSize: 16,
                             fontWeight:
-                                FontWeight.bold,
+                                FontWeight
+                                    .bold,
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                ],
+                    ),
+
+                    const SizedBox(
+                      height: 24,
+                    ),
+
+                    Row(
+                      mainAxisAlignment:
+                          MainAxisAlignment
+                              .center,
+
+                      children: [
+                        const Text(
+                          "Already have an account? ",
+                        ),
+
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pop(
+                              context,
+                            );
+                          },
+
+                          child: const Text(
+                            "Login",
+                            style:
+                                TextStyle(
+                              color: Colors
+                                  .blue,
+                              fontWeight:
+                                  FontWeight
+                                      .bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
