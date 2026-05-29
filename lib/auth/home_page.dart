@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF5F7FF),
+      backgroundColor: const Color(0xffF8F5FA),
 
       appBar: AppBar(
         backgroundColor: const Color(0xff3399FF),
@@ -39,94 +39,85 @@ class HomePage extends StatelessWidget {
       ),
 
       body: Center(
-        child: Container(
-          margin: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisAlignment:
+              MainAxisAlignment.center,
 
-          padding: const EdgeInsets.all(28),
+          children: [
+            CircleAvatar(
+              radius: 55,
 
-          decoration: BoxDecoration(
-            gradient: const LinearGradient(
-              colors: [
-                Color(0xff3399FF),
-                Color(0xff66B2FF),
-              ],
+              backgroundColor:
+                  Colors.blue.withOpacity(0.20),
+
+              child: const Icon(
+                Icons.person,
+                size: 55,
+                color: Colors.blue,
+              ),
             ),
 
-            borderRadius:
-                BorderRadius.circular(28),
+            const SizedBox(height: 24),
 
-            boxShadow: [
-              BoxShadow(
-                color:
-                    Colors.blue.withOpacity(0.25),
-                blurRadius: 16,
-                offset: const Offset(0, 8),
+            const Text(
+              "Welcome, Abror!",
+              style: TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
               ),
-            ],
-          ),
+            ),
 
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+            const SizedBox(height: 8),
 
-            children: [
-              const CircleAvatar(
-                radius: 42,
+            Text(
+              "Email: $email",
 
-                backgroundColor: Colors.white,
-
-                child: Icon(
-                  Icons.person,
-                  size: 45,
-                  color: Color(0xff3399FF),
-                ),
+              style: const TextStyle(
+                color: Colors.black54,
+                fontSize: 16,
               ),
+            ),
 
-              const SizedBox(height: 20),
+            const SizedBox(height: 35),
 
-              const Text(
-                "Welcome, Admin3",
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+            Container(
+              width: 240,
+
+              padding:
+                  const EdgeInsets.symmetric(
+                vertical: 22,
+                horizontal: 18,
               ),
 
-              const SizedBox(height: 8),
+              decoration: BoxDecoration(
+                color: Colors.lightBlue.shade50,
 
-              Text(
-                email,
-
-                style: const TextStyle(
-                  color: Colors.white70,
-                ),
+                borderRadius:
+                    BorderRadius.circular(18),
               ),
 
-              const SizedBox(height: 20),
-
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 18,
-                  vertical: 12,
-                ),
-
-                decoration: BoxDecoration(
-                  color: Colors.orange,
-
-                  borderRadius:
-                      BorderRadius.circular(14),
-                ),
-
-                child: const Text(
-                  "🔥 Email belum terverifikasi",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
+              child: Column(
+                children: const [
+                  Icon(
+                    Icons.check_circle,
+                    color: Colors.green,
+                    size: 50,
                   ),
-                ),
+
+                  SizedBox(height: 14),
+
+                  Text(
+                    "You have successfully logged in!",
+                    textAlign: TextAlign.center,
+
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
